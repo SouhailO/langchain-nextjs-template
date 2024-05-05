@@ -35,3 +35,9 @@ yarn-error.log*
 next-env.d.ts
 
 .yarn
+.env
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/langchain-nextjs-template.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml

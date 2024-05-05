@@ -72,8 +72,8 @@ export default function Home() {
     <ChatWindow
       endpoint="api/chat"
       emoji="🏴‍☠️"
-      titleText="Patchy the Chatty Pirate"
-      placeholder="I'm an LLM pretending to be a pirate! Ask me about the pirate life!"
+      titleText="Your own personal ChatGPT"
+      placeholder="Ask me any question you like. All data is privately stored on your Microsoft Azure tenant."
       emptyStateComponent={InfoCard}
     ></ChatWindow>
   );

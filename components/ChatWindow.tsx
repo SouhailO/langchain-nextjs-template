@@ -31,7 +31,7 @@ export function ChatWindow(props: {
   const intemediateStepsToggle = showIntermediateStepsToggle && (
     <div>
       <input type="checkbox" id="show_intermediate_steps" name="show_intermediate_steps" checked={showIntermediateSteps} onChange={(e) => setShowIntermediateSteps(e.target.checked)}></input>
-      <label htmlFor="show_intermediate_steps"> Show intermediate steps</label>
+      <label htmlFor="show_intermediate_steps"> Montrer les étapes intermédiaires</label>
     </div>
   );
 

@@ -3,6 +3,7 @@ import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
 
 import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
+import { RunnableSequence } from "@langchain/core/runnables";
 import { HttpResponseOutputParser } from "langchain/output_parsers";
 
 export const runtime = "edge";
@@ -11,7 +12,7 @@ const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
 };
 
-const TEMPLATE = `You are a pirate named Patchy. All responses must be extremely verbose and in pirate dialect.
+const TEMPLATE = `You are a useful assistant, you answer the user's request with extreme precision and avoid hallucinations at all costs.
 
 Current conversation:
 {chat_history}
@@ -44,7 +45,7 @@ export async function POST(req: NextRequest) {
      */
     const model = new ChatOpenAI({
       temperature: 0.8,
-      modelName: "gpt-3.5-turbo-1106",
+      modelName: "gpt-4-turbo-2024-04-09",
     });
 
     /**
@@ -59,7 +60,9 @@ export async function POST(req: NextRequest) {
      * import { RunnableSequence } from "@langchain/core/runnables";
      * const chain = RunnableSequence.from([prompt, model, outputParser]);
      */
-    const chain = prompt.pipe(model).pipe(outputParser);
+    /** const chain = prompt.pipe(model).pipe(outputParser); **/
+
+    const chain = RunnableSequence.from([prompt, model, outputParser]);
 
     const stream = await chain.stream({
       chat_history: formattedPreviousMessages.join("\n"),

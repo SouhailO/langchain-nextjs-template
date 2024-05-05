@@ -79,8 +79,8 @@ export default function AgentsPage() {
     <ChatWindow
       endpoint="api/chat/agents"
       emptyStateComponent={InfoCard}
-      placeholder="Squawk! I'm a conversational agent! Ask me about the current weather in Honolulu!"
-      titleText="Polly the Agentic Parrot"
+      placeholder="Je suis un agent conversationnel avec de la suite dans les idées."
+      titleText="Agent 001"
       emoji="🦜"
       showIntermediateStepsToggle={true}
     ></ChatWindow>

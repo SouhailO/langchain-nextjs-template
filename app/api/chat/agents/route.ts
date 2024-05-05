@@ -5,6 +5,7 @@ import { AgentExecutor, createToolCallingAgent } from "langchain/agents";
 import { ChatOpenAI } from "@langchain/openai";
 import { SerpAPI } from "@langchain/community/tools/serpapi";
 import { Calculator } from "@langchain/community/tools/calculator";
+import { WolframAlphaTool } from "@langchain/community/tools/wolframalpha";
 import { AIMessage, ChatMessage, HumanMessage } from "@langchain/core/messages";
 
 import {
@@ -24,7 +25,7 @@ const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   }
 };
 
-const AGENT_SYSTEM_TEMPLATE = `You are a talking parrot named Polly. All final responses must be how a talking parrot would respond. Squawk often!`;
+const AGENT_SYSTEM_TEMPLATE = `Tu es un assistant utile. Tu réponds aux questoins de l'utilisateur avec le plus de précisions et de détails.`;
 
 /**
  * This handler initializes and calls an OpenAI Functions agent.
@@ -53,7 +54,7 @@ export async function POST(req: NextRequest) {
     // You can remove this or use a different tool instead.
     const tools = [new Calculator(), new SerpAPI()];
     const chat = new ChatOpenAI({
-      modelName: "gpt-3.5-turbo-1106",
+      modelName: "gpt-4-turbo-2024-04-09",
       temperature: 0,
       // IMPORTANT: Must "streaming: true" on OpenAI to enable final output streaming below.
       streaming: true,
